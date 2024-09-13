@@ -1,0 +1,16 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<h3>Comments:</h3>
+{% for comment in comments %}
+    <p>{{ comment.text }}</p>
+    <p>By: {{ comment.user.username }}</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="comment"></textarea>
+        <button type="submit">Add Comment</button>
+    </form>
+{% endif %}
+
